@@ -8,6 +8,7 @@ import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class proximityActivity extends AppCompatActivity {
 
@@ -46,6 +47,11 @@ public class proximityActivity extends AppCompatActivity {
 
             }
         };
-        sensorManager.registerListener(proxilistner, sensor, SensorManager.SENSOR_DELAY_NORMAL);
+
+        if (sensor != null) {
+            sensorManager.registerListener(proxilistner, sensor, SensorManager.SENSOR_DELAY_NORMAL);
+        } else {
+            Toast.makeText(this, "No sensor found", Toast.LENGTH_SHORT).show();
+        }
     }
 }
